@@ -1,9 +1,21 @@
 <h1>Portfolio Items</h1>
 
+<div>
+  <%= link_to new_portfolio_path do %>
+    <button>Create New Portfolio Item</button>
+  <% end %>
+</div>
+
 <% @portfolio_items.each do |portfolio_item| %>
-  <p><%= portfolio_item.title %></p>
-  <p><%= portfolio_item.subtitle %></p>
-  <p><%= portfolio_item.body %></p>
-  <%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
-  
+  <div>
+    <p><%= portfolio_item.title %></p>
+    <p><%= portfolio_item.subtitle %></p>
+    <p><%= portfolio_item.body %></p>
+    <%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
+    <div>
+      <%= link_to edit_portfolio_path(portfolio_item.id) do %>
+        <button>Edit</button>
+      <% end %>
+    </div>
+  </div>
 <% end %>
