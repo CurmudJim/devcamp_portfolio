@@ -8,12 +8,12 @@
 
 <% @portfolio_items.each do |portfolio_item| %>
   <div>
-    <p><%= portfolio_item.title %></p>
+    <p><%= link_to portfolio_item.title, portfolio_path(portfolio_item) %></p>
     <p><%= portfolio_item.subtitle %></p>
     <p><%= portfolio_item.body %></p>
     <%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
     <div>
-      <%= link_to edit_portfolio_path(portfolio_item.id) do %>
+      <%= link_to edit_portfolio_path(portfolio_item) do %>
         <button>Edit</button>
       <% end %>
     </div>
