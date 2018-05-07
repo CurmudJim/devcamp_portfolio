@@ -16,6 +16,10 @@
       <%= link_to edit_portfolio_path(portfolio_item) do %>
         <button>Edit</button>
       <% end %>
+
+      <%= link_to portfolio_item, method: :delete, data: {confirm: 'Are you sure?'} do %>
+        <button>Delete</button>
+      <% end %>
     </div>
   </div>
 <% end %>
