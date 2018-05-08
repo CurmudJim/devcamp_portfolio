@@ -1,25 +1,23 @@
 <h1>Portfolio Items</h1>
 
 <div>
-  <%= link_to new_portfolio_path do %>
-    <button>Create New Portfolio Item</button>
-  <% end %>
+  <%= link_to 'Create New Portfolio Item', new_portfolio_path , class: 'btn btn-primary' %>
 </div>
 
 <% @portfolio_items.each do |portfolio_item| %>
-  <div>
-    <p><%= link_to portfolio_item.title, portfolio_show_path(portfolio_item) %></p>
-    <p><%= portfolio_item.subtitle %></p>
-    <p><%= portfolio_item.body %></p>
-    <%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
-    <div>
-      <%= link_to edit_portfolio_path(portfolio_item) do %>
-        <button>Edit</button>
-      <% end %>
+<div class="card" style="width: 25%;">
+  <img class="card-img-top"><%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
 
-      <%= link_to portfolio_item, method: :delete, data: {confirm: 'Are you sure?'} do %>
-        <button>Delete</button>
-      <% end %>
-    </div>
+  <h5 class="card-title">
+    <%= link_to portfolio_item.title, portfolio_show_path(portfolio_item) %>
+  </h5>
+  <p class="card-text"><%= portfolio_item.subtitle %></p>
+  <p class="card-text"><%= portfolio_item.body %></p>
+  <div>
+    <%= link_to 'Edit', edit_portfolio_path(portfolio_item), class: 'btn btn-primary'%>
+
+    <%= link_to 'Delete', portfolio_item, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
   </div>
+
+</div>
 <% end %>
